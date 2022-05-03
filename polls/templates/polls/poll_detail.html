@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="flex flex-col justify-center items-center gap-2 bg-neutral-200 p-4 rounded">
+    <h3 class="text-xl font-bold text-red-800">{{ poll }}</h3>
+
+
+        <form class="flex flex-col justify-center items-center w-full" action="" method="POST">
+            {% csrf_token %}
+            {% for choice in choices %}
+            <div class="flex justify-between items-center w-full">
+                <span>{{ choice }}</span>
+                <input type="radio" name="option" value="{{choice.id}}">
+            </div>
+            {% endfor %}
+
+
+            <button type="submit" class="p-2 bg-sky-400 text-neutral-900 rounded">
+                Votar
+            </button>
+        </form>
+
+
+</div>
+{% endblock %}
